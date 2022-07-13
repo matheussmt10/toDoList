@@ -1,22 +1,27 @@
 const inputDatas = document.getElementById('inputToDoList')
 const buttonInsert = document.getElementById('buttonToDoList')
 const elementUl = document.getElementById('elementUl')
+const buttonClearAll = document.getElementById('buttonClearAll')
+const taskList = document.querySelectorAll('#task li')
 
-const taskList = document.getElementById('li')
-
+buttonClearAll.style.display = 'none'
 // funcionalidade para capturar o valor digitado pela tecla Enter
 inputDatas.addEventListener('keypress', (e) => {
     if(e.key == 'Enter'){
         const textTask = inputDatas.value
         inputDatas.value = ''
         elementUl.appendChild(addTask(textTask))
+        
+
     }
 },false)
+
 // funcionalidade para capturar o valor digitado pelo click do mouse
 buttonInsert.addEventListener('click',()=>{
     const textTask = inputDatas.value
     inputDatas.value = ''
     elementUl.appendChild(addTask(textTask))
+
 })
 
 
@@ -42,20 +47,36 @@ function addTask(textTask) {
     
         elementLI.appendChild(elementP)
         elementLI.appendChild(elementButton)
-
+        
         elementP.addEventListener('click', () => {
-            
+           
                 if (elementLI.className == 'taskFormat') {
                     elementLI.classList.remove('taskFormat')
                     elementLI.classList.add('checkTask')
                 } else if (elementLI.className == 'checkTask'){
                     elementLI.classList.remove('checkTask')
                     elementLI.classList.add('taskFormat')
-                }
+                } 
             
       })
+
+      elementButton.addEventListener('click', ()=> {
+        elementLI.remove(this.li)
+      })
+
+      
+
+      
+      buttonClearAll.addEventListener('click', ()=>{
+        console.log('oi')
+      })
+
+   
     
         return elementLI
     }
 }
 
+function deleteTask() {
+
+}

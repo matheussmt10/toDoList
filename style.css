@@ -165,3 +165,18 @@ body {
     transition: all .3s;
 }
 
+#buttonClearAll {
+    position: relative;
+    left: 100%;
+    width: 70px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#buttonClearAll:hover {
+    background-color: rgb(236, 25, 25);
+    color: aliceblue;
+    transition: all .3s;
+}
