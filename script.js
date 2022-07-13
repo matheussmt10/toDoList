@@ -1,6 +1,9 @@
 const inputDatas = document.getElementById('inputToDoList')
 const buttonInsert = document.getElementById('buttonToDoList')
 const elementUl = document.getElementById('elementUl')
+
+const taskList = document.getElementById('li')
+
 // funcionalidade para capturar o valor digitado pela tecla Enter
 inputDatas.addEventListener('keypress', (e) => {
     if(e.key == 'Enter'){
@@ -15,6 +18,8 @@ buttonInsert.addEventListener('click',()=>{
     inputDatas.value = ''
     elementUl.appendChild(addTask(textTask))
 })
+
+
 
 // funcionalidade adicionar a tarefa na tela
 function addTask(textTask) {
@@ -33,11 +38,24 @@ function addTask(textTask) {
         elementLI.setAttribute('id', 'task')
         elementLI.setAttribute('class', 'taskFormat')
         elementP.textContent = textTask
+        elementP.setAttribute('id', 'textP')
     
         elementLI.appendChild(elementP)
         elementLI.appendChild(elementButton)
+
+        elementP.addEventListener('click', () => {
+            
+                if (elementLI.className == 'taskFormat') {
+                    elementLI.classList.remove('taskFormat')
+                    elementLI.classList.add('checkTask')
+                } else if (elementLI.className == 'checkTask'){
+                    elementLI.classList.remove('checkTask')
+                    elementLI.classList.add('taskFormat')
+                }
+            
+      })
     
         return elementLI
     }
-  
 }
+
