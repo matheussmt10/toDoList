@@ -1,1 +1,1 @@
-Training DOMTraining DOM
+Training DOM
