@@ -4,14 +4,14 @@ const elementUl = document.getElementById('elementUl')
 const buttonClearAll = document.getElementById('buttonClearAll')
 const taskList = document.querySelectorAll('#task li')
 
-buttonClearAll.style.display = 'none'
+
 // funcionalidade para capturar o valor digitado pela tecla Enter
 inputDatas.addEventListener('keypress', (e) => {
     if(e.key == 'Enter'){
         const textTask = inputDatas.value
         inputDatas.value = ''
         elementUl.appendChild(addTask(textTask))
-        
+        buttonClearAll.style.display = 'block'
 
     }
 },false)
@@ -21,7 +21,7 @@ buttonInsert.addEventListener('click',()=>{
     const textTask = inputDatas.value
     inputDatas.value = ''
     elementUl.appendChild(addTask(textTask))
-
+    buttonClearAll.style.display = 'block'
 })
 
 
@@ -62,21 +62,26 @@ function addTask(textTask) {
 
       elementButton.addEventListener('click', ()=> {
         elementLI.remove(this.li)
+        hiddenButtonClearAll()
       })
 
-      
 
-      
       buttonClearAll.addEventListener('click', ()=>{
-        console.log('oi')
+        elementButton.dispatchEvent(new Event('click'))
+        
       })
 
-   
-    
+
         return elementLI
     }
 }
 
-function deleteTask() {
-
+function hiddenButtonClearAll() {
+    const taskLi = document.querySelector('#task')
+    if (taskLi !== null) {
+        buttonClearAll.style.display = 'block'
+    } else {
+        buttonClearAll.style.display = 'none'
+    }
 }
+
