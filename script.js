@@ -25,7 +25,6 @@ buttonInsert.addEventListener('click',()=>{
 })
 
 
-
 // funcionalidade adicionar a tarefa na tela
 function addTask(textTask) {
     // funcionalidade verificar se o campo está vazio e alertar o usuário
@@ -59,18 +58,13 @@ function addTask(textTask) {
                 } 
             
       })
-
       elementButton.addEventListener('click', ()=> {
         elementLI.remove(this.li)
         hiddenButtonClearAll()
       })
-
-
       buttonClearAll.addEventListener('click', ()=>{
-        elementButton.dispatchEvent(new Event('click'))
-        
+        elementButton.dispatchEvent(new Event('click')) 
       })
-
 
         return elementLI
     }
